@@ -1,13 +1,15 @@
-function calcularIMC() {
-    var nome = document.getElementById("nome").value;
-    var peso = parseFloat(document.getElementById("peso").value);
-    var altura = parseFloat(document.getElementById("altura").value);
-
-    if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
-        var imc = peso / (altura * altura);
-        var resultado = nome + ", seu IMC é: " + imc.toFixed(2);
-        document.getElementById("resultado").innerHTML = resultado;
+function dividirNome() {
+    var nomeCompleto = document.getElementById("nomeCompleto").value;
+    var nomeArray = nomeCompleto.split(" ");
+    
+    if (nomeArray.length >= 1) {
+        document.getElementById("nome").value = nomeArray[0];
+        if (nomeArray.length >= 2) {
+            document.getElementById("sobrenome").value = nomeArray.slice(1).join(" ");
+        } else {
+            document.getElementById("sobrenome").value = "";
+        }
     } else {
-        alert("Por favor, insira valores válidos para nome, peso e altura.");
+        alert("Por favor, insira um nome completo válido.");
     }
 }
